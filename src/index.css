@@ -1,0 +1,60 @@
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    overflow: clip;
+    background-color: #1a1a1a;
+    color: #eeeeee;
+}
+
+#root {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow: clip;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(11, 0.95ch);
+    font-family: "essonnes-display", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 12rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    margin: 0;
+    max-width: 100%;
+    text-align: center;
+    -webkit-user-select: none;
+    -ms-user-select: none;    
+    user-select: none;        
+}
+
+.countdown-character {
+    display: grid;
+    place-items: center;
+}
+
+@media (max-width: 1500px) {
+    .countdown {
+        font-size: 8rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .countdown {
+        font-size: 2.5rem;
+    }
+}
