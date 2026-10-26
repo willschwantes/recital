@@ -26,6 +26,7 @@ export default function App() {
 
   const format = (value) => value.toString().padStart(2, '0')
   const countdown = `${format(remainingTime.day)}:${format(remainingTime.hour)}:${format(remainingTime.minute)}:${format(remainingTime.second)}`
+  console.log("The clock ticks!")
 
   return (
     <div>
