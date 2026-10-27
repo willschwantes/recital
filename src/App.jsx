@@ -25,7 +25,10 @@ export default function App() {
   }, [])
 
   const format = (value) => value.toString().padStart(2, '0')
-  const countdown = `${format(remainingTime.day)}:${format(remainingTime.hour)}:${format(remainingTime.minute)}:${format(remainingTime.second)}`
+  const time = `${format(remainingTime.hour)}:${format(remainingTime.minute)}:${format(remainingTime.second)}`
+  const countdown = remainingTime.day === 0
+    ? time
+    : `${remainingTime.day < 10 ? remainingTime.day : format(remainingTime.day)}:${time}`
   console.log("The clock ticks!")
 
   return (
