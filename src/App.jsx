@@ -30,6 +30,7 @@ export default function App() {
 
   return (
     <div>
+      <title>{countdown}</title>
       <p className="countdown" aria-label={countdown}>
         {[...countdown].map((character, index) => (
           <span className="countdown-character" aria-hidden="true" key={index}>
