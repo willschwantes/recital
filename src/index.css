@@ -5,6 +5,7 @@ body {
     margin: 0;
     overflow: clip;
     background: radial-gradient(ellipse at center, #191a1c 20%, #000000 100%);
+    background-color: #000000;
     color: #eeeeee;
 }
 
