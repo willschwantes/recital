@@ -65,9 +65,19 @@ body::-webkit-scrollbar {
     place-items: center;
 }
 
+.countdown-view {
+    animation: setlist-fade-in 700ms ease both;
+}
+
 @media (max-width: 1500px) {
     .countdown {
         font-size: 8rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .countdown-view {
+        animation: none;
     }
 }
 

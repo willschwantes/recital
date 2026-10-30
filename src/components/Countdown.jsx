@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 const targetDate = new Date(2026, 10, 6, 20, 0, 0)
 
 function getRemainingTime() {
-  const remainingSeconds = Math.max(0, Math.floor((targetDate.getTime() - Date.now()) / 1000))
+  const remainingSeconds = Math.floor(Math.abs(targetDate.getTime() - Date.now()) / 1000)
 
   return {
     day: Math.floor(remainingSeconds / 86400),
@@ -13,7 +13,7 @@ function getRemainingTime() {
   }
 }
 
-export default function Countdown() {
+export default function Countdown({ compact = false }) {
   const [remainingTime, setRemainingTime] = useState(getRemainingTime)
 
   useEffect(() => {
@@ -29,12 +29,15 @@ export default function Countdown() {
   const countdown = remainingTime.day === 0
     ? time
     : `${remainingTime.day < 10 ? remainingTime.day : format(remainingTime.day)}:${time}`
-  console.log("The clock ticks!")
 
   return (
-    <div className="countdown-view view-spotlight">
-      <title>{countdown}</title>
-      <p className="countdown" aria-label={countdown}>
+    <div className={`countdown-view${compact ? ' countdown-view--compact' : ' view-spotlight'}`}>
+      {!compact && <title>{countdown}</title>}
+      <p
+        className="countdown"
+        aria-label={countdown}
+        style={{ gridTemplateColumns: `repeat(${countdown.length}, 0.95ch)` }}
+      >
         {[...countdown].map((character, index) => (
           <span className="countdown-character" aria-hidden="true" key={index}>
             {character}
