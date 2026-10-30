@@ -1,5 +1,5 @@
 import './LivestreamView.css'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 function getYouTubeEmbedUrl(source) {
   if (!source) return null
@@ -22,9 +22,11 @@ function getYouTubeEmbedUrl(source) {
     const parameters = new URLSearchParams({
       autoplay: '1',
       controls: '1',
-      mute: '1',
+      enablejsapi: '1',
+      mute: '0',
       playsinline: '1',
       rel: '0',
+      origin: window.location.origin,
     })
 
     return `https://www.youtube.com/embed/${videoId}?${parameters}`
@@ -171,9 +173,32 @@ const sets = [
 
 export default function LivestreamView({ videoSrc }) {
   const youtubeEmbedUrl = getYouTubeEmbedUrl(videoSrc)
+  const youtubePlayerRef = useRef(null)
+  const videoPlayerRef = useRef(null)
   const [activeSetIndex, setActiveSetIndex] = useState(0)
   const [livestreamVisible, setLivestreamVisible] = useState(true)
   const activeSet = sets[activeSetIndex]
+
+  function toggleLivestream() {
+    const shouldShow = !livestreamVisible
+
+    if (youtubePlayerRef.current?.contentWindow) {
+      youtubePlayerRef.current.contentWindow.postMessage(
+        JSON.stringify({
+          event: 'command',
+          func: shouldShow ? 'unMute' : 'mute',
+          args: [],
+        }),
+        'https://www.youtube.com',
+      )
+    }
+
+    if (videoPlayerRef.current) {
+      videoPlayerRef.current.muted = !shouldShow
+    }
+
+    setLivestreamVisible(shouldShow)
+  }
 
   return (
     <main className="livestream-view">
@@ -191,6 +216,7 @@ export default function LivestreamView({ videoSrc }) {
                 youtubeEmbedUrl ? (
                   <iframe
                     className="livestream-video"
+                    ref={youtubePlayerRef}
                     src={youtubeEmbedUrl}
                     title="Livestream video"
                     allow="autoplay; encrypted-media; picture-in-picture; web-share"
@@ -199,9 +225,9 @@ export default function LivestreamView({ videoSrc }) {
                 ) : (
                   <video
                     className="livestream-video"
+                    ref={videoPlayerRef}
                     autoPlay
                     controls
-                    muted
                     playsInline
                     src={videoSrc}
                   >
@@ -216,12 +242,12 @@ export default function LivestreamView({ videoSrc }) {
             </div>
           </div>
           <button
-            className={`livestream-toggle${livestreamVisible ? ' is-overlaid' : ''}`}
+            className="livestream-toggle"
             type="button"
             aria-controls="livestream-player"
             aria-expanded={livestreamVisible}
             aria-label={livestreamVisible ? 'Hide livestream' : 'Show livestream'}
-            onClick={() => setLivestreamVisible((visible) => !visible)}
+            onClick={toggleLivestream}
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d={livestreamVisible ? 'm6 14 6-6 6 6' : 'm6 10 6 6 6-6'} />

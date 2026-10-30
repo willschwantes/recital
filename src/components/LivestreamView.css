@@ -42,21 +42,17 @@
     position: relative;
     z-index: 1;
     display: grid;
-    width: 2.5rem;
-    height: 2.5rem;
-    margin: 0.75rem auto 0;
-    padding: 0.55rem;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem auto 0;
+    padding: 0.4rem;
     place-items: center;
     border: 1px solid rgb(255 255 255 / 35%);
     border-radius: 50%;
     background: #101113;
     color: #ececec;
     cursor: pointer;
-    transition: margin-top 450ms ease, background-color 160ms ease;
-}
-
-.livestream-toggle.is-overlaid {
-    margin-top: -1.25rem;
+    transition: background-color 160ms ease;
 }
 
 .livestream-toggle:hover {
