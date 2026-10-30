@@ -5,9 +5,8 @@ body {
     margin: 0;
     overflow: hidden;
     overscroll-behavior: none;
-    background: radial-gradient(ellipse at center, #191a1c 20%, #000000 100%);
     background-color: #000000;
-    color: #eeeeee;
+    color: #ececec;
 }
 
 #root {
@@ -44,6 +43,23 @@ body::-webkit-scrollbar {
     user-select: none;        
 }
 
+.view-spotlight {
+    position: relative;
+    isolation: isolate;
+}
+
+.view-spotlight::before {
+    position: absolute;
+    z-index: -1;
+    inset: -50vh -50vw;
+    background-image: radial-gradient(ellipse at center, #191a1c 20%, #000000 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    content: "";
+    pointer-events: none;
+}
+
 .countdown-character {
     display: grid;
     place-items: center;
@@ -62,16 +78,22 @@ body::-webkit-scrollbar {
 
     html,
     body {
-        background: radial-gradient(ellipse at center, #191a1c 0%, #000000 65%);
         background-color: #000000;
+    }
+
+    .view-spotlight::before {
+        background-image: radial-gradient(ellipse at center, #191a1c 0%, #000000 65%);
     }
 }
 
 @media (max-height: 500px) and (orientation: landscape) {
     html,
     body {
-        background: radial-gradient(ellipse at center, #191a1c 0%, #000000 65%);
         background-color: #000000;
+    }
+
+    .view-spotlight::before {
+        background-image: radial-gradient(ellipse at center, #191a1c 0%, #000000 65%);
     }
 
     .countdown {

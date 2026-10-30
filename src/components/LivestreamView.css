@@ -13,9 +13,9 @@
 }
 
 .livestream-video-container {
+    position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: #101113;
 }
 
 .livestream-video,
@@ -29,29 +29,98 @@
     object-fit: contain;
 }
 
+iframe.livestream-video {
+    border: 0;
+}
+
+.youtube-controls {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 160ms ease;
+}
+
+.livestream-video-container:hover .youtube-controls,
+.youtube-controls:focus-within,
+.livestream-video-container:fullscreen .youtube-controls {
+    opacity: 1;
+}
+
+.youtube-control-button {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.65rem;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 24%);
+    border-radius: 4px;
+    background: rgb(0 0 0 / 72%);
+    color: #fff;
+    cursor: pointer;
+}
+
+.youtube-control-button svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+}
+
+.youtube-control-button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.livestream-video-container:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    aspect-ratio: auto;
+    background: #000;
+}
+
+.livestream-video-container:fullscreen .livestream-video {
+    width: 100%;
+    height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .youtube-controls {
+        transition: none;
+    }
+}
+
 .livestream-video-placeholder {
     display: grid;
     place-items: center;
     color: #b8b8b8;
     font-family: sans-serif;
+    font-family: "degular", sans-serif;
+    font-weight: 300;
+    font-style: normal;
 }
 
 .livestream-notes {
     padding: clamp(1.5rem, 4vw, 2.5rem) 0;
-    font-family: "minion-pro", serif;
-    font-weight: 250;
+    font-family: "minion-pro", sans-serif;
+    font-weight: 300;
     font-style: normal;
     line-height: 1.65;
-    opacity: 0;
-    animation: livestream-notes-fade-in 1.2s ease 0.5s forwards;
+    opacity: 1;
 }
 
 .livestream-notes h1 {
     margin: 0 0 1rem;
     font-size: clamp(1.5rem, 4vw, 2rem);
     font-family: "degular", sans-serif;
-    font-weight: 500;
+    font-weight: 300;
     font-style: normal;
+    letter-spacing: 0.15em;
 }
 
 .livestream-notes p {
@@ -65,12 +134,5 @@
 
     to {
         opacity: 1;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .livestream-notes {
-        opacity: 1;
-        animation: none;
     }
 }

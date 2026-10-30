@@ -32,7 +32,7 @@ export default function Countdown() {
   console.log("The clock ticks!")
 
   return (
-    <div>
+    <div className="countdown-view view-spotlight">
       <title>{countdown}</title>
       <p className="countdown" aria-label={countdown}>
         {[...countdown].map((character, index) => (
