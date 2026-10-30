@@ -284,7 +284,7 @@ export default function LivestreamView({ videoSrc, stage }) {
     <main
       className={[
         'livestream-view',
-        stage === rainbowTransitionStage && 'is-rainbow-transition',
+        stage >= rainbowTransitionStage && 'is-rainbow-transition',
         latestRevealedSet?.number === 'V' && 'is-final-set-revealed',
       ].filter(Boolean).join(' ')}
     >

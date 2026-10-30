@@ -3,7 +3,7 @@ import LivestreamView from './components/LivestreamView.jsx'
 
 // -1: countdown; 0: welcome with countdown; 1: countdown fades out; 2+: reveal paragraphs; 14: thank-you page.
 // Stage 10 fades toward the rainbow; stage 11 reveals Set V.
-const presentationStage = 0
+const presentationStage = 12
 
 export default function App() {
   if (presentationStage === -1) {
