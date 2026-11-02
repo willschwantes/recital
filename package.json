@@ -7,15 +7,17 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "import:presentation-content": "node scripts/import-presentation-content.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
     "gh-pages": "^6.3.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "latest",
+    "supabase": "^2.122.0",
     "vite": "latest"
   }
 }

@@ -1,0 +1,2 @@
+[functions.set-stage]
+verify_jwt = false

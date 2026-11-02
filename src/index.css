@@ -5,9 +5,8 @@ body {
     margin: 0;
     overflow: hidden;
     overscroll-behavior: none;
-    background: radial-gradient(ellipse at center, #191a1c 20%, #000000 100%);
     background-color: #000000;
-    color: #eeeeee;
+    color: #ececec;
 }
 
 #root {
@@ -16,6 +15,31 @@ body {
     display: grid;
     place-items: center;
     overflow: clip;
+}
+
+.presentation-status {
+    max-width: 36rem;
+    padding: 1.5rem;
+    color: #ececec;
+    font-family: "degular", sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.presentation-warning {
+    position: fixed;
+    z-index: 10;
+    top: 0.75rem;
+    left: 50%;
+    max-width: calc(100vw - 2rem);
+    padding: 0.5rem 0.75rem;
+    transform: translateX(-50%);
+    border: 1px solid rgb(255 255 255 / 35%);
+    border-radius: 0.25rem;
+    background: #17181a;
+    color: #ececec;
+    font-family: "degular", sans-serif;
+    text-align: center;
 }
 
 html {
@@ -44,14 +68,41 @@ body::-webkit-scrollbar {
     user-select: none;        
 }
 
+.view-spotlight {
+    position: relative;
+    isolation: isolate;
+}
+
+.view-spotlight::before {
+    position: absolute;
+    z-index: -1;
+    inset: -50vh -50vw;
+    background-image: radial-gradient(ellipse at center, #191a1c 20%, #000000 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    content: "";
+    pointer-events: none;
+}
+
 .countdown-character {
     display: grid;
     place-items: center;
 }
 
+.countdown-view {
+    animation: setlist-fade-in 700ms ease both;
+}
+
 @media (max-width: 1500px) {
     .countdown {
         font-size: 8rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .countdown-view {
+        animation: none;
     }
 }
 
@@ -62,16 +113,22 @@ body::-webkit-scrollbar {
 
     html,
     body {
-        background: radial-gradient(ellipse at center, #191a1c 0%, #000000 65%);
         background-color: #000000;
+    }
+
+    .view-spotlight::before {
+        background-image: radial-gradient(ellipse at center, #191a1c 0%, #000000 65%);
     }
 }
 
 @media (max-height: 500px) and (orientation: landscape) {
     html,
     body {
-        background: radial-gradient(ellipse at center, #191a1c 0%, #000000 65%);
         background-color: #000000;
+    }
+
+    .view-spotlight::before {
+        background-image: radial-gradient(ellipse at center, #191a1c 0%, #000000 65%);
     }
 
     .countdown {
