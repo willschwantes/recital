@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist",
     "import:presentation-content": "node scripts/import-presentation-content.mjs"
   },
   "dependencies": {

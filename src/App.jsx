@@ -131,7 +131,7 @@ export default function App() {
         <Countdown />
       ) : (
         <LivestreamView
-          videoSrc="https://www.youtube.com/live/zSg3Ho_lqYw?si=e8eibNwVPOm2kneY"
+          videoSrc="https://www.youtube.com/live/kAsZNQ_VNLg?si=uppgTzv3E3Pknq07"
           stage={presentation.stage}
           content={presentation.content}
         />
