@@ -17,6 +17,31 @@ body {
     overflow: clip;
 }
 
+.presentation-status {
+    max-width: 36rem;
+    padding: 1.5rem;
+    color: #ececec;
+    font-family: "degular", sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.presentation-warning {
+    position: fixed;
+    z-index: 10;
+    top: 0.75rem;
+    left: 50%;
+    max-width: calc(100vw - 2rem);
+    padding: 0.5rem 0.75rem;
+    transform: translateX(-50%);
+    border: 1px solid rgb(255 255 255 / 35%);
+    border-radius: 0.25rem;
+    background: #17181a;
+    color: #ececec;
+    font-family: "degular", sans-serif;
+    text-align: center;
+}
+
 html {
     scrollbar-width: none;
 }
