@@ -1,0 +1,119 @@
+.stage-control-backdrop {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: rgb(0 0 0 / 78%);
+    color: #f5f3ed;
+    font-family: "degular", sans-serif;
+}
+
+.stage-control-panel {
+    position: relative;
+    box-sizing: border-box;
+    width: min(100%, 28rem);
+    padding: 2rem;
+    border: 1px solid rgb(245 243 237 / 32%);
+    border-radius: 0.75rem;
+    background: #17181a;
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 45%);
+}
+
+.stage-control-panel h1 {
+    margin: 0 2rem 1.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.stage-control-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 1.75rem;
+    cursor: pointer;
+}
+
+.stage-control-form {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.stage-control-form input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgb(245 243 237 / 45%);
+    border-radius: 0.35rem;
+    background: #000;
+    color: inherit;
+    font: inherit;
+}
+
+.stage-control-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.stage-control-form button,
+.stage-control-actions button {
+    min-height: 2.75rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid rgb(245 243 237 / 55%);
+    border-radius: 0.35rem;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.stage-control-actions button {
+    flex: 1;
+}
+
+.stage-control-form button:hover:not(:disabled),
+.stage-control-actions button:hover:not(:disabled),
+.stage-control-close:hover:not(:disabled) {
+    background: rgb(245 243 237 / 12%);
+}
+
+.stage-control-form button:focus-visible,
+.stage-control-actions button:focus-visible,
+.stage-control-close:focus-visible,
+.stage-control-form input:focus-visible {
+    outline: 2px solid #f5f3ed;
+    outline-offset: 3px;
+}
+
+.stage-control-form button:disabled,
+.stage-control-actions button:disabled,
+.stage-control-close:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.stage-control-status {
+    margin: 0.75rem 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.stage-control-error {
+    margin: 0.75rem 0 0;
+    color: #ffaaa3;
+    line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+    .stage-control-panel {
+        padding: 1.5rem;
+    }
+}

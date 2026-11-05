@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Countdown from './components/Countdown.jsx'
 import LivestreamView from './components/LivestreamView.jsx'
+import StageControl from './components/StageControl.jsx'
 import { supabase, supabaseConfigurationError } from './lib/supabase.js'
 
 function isValidContentItem(item) {
@@ -136,6 +137,7 @@ export default function App() {
           content={presentation.content}
         />
       )}
+      <StageControl stage={presentation.stage} />
     </>
   )
 }
