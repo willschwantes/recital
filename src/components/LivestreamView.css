@@ -372,6 +372,7 @@
 
 .livestream-welcome p {
     margin: 0;
+    white-space: pre-line;
 }
 
 .livestream-thank-you {
